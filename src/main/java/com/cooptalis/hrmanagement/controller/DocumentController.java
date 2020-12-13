@@ -1,10 +1,11 @@
-package com.projet.aws.awsutils.controller;
+package com.cooptalis.hrmanagement.controller;
 
-import com.projet.aws.awsutils.api.DocumentApi;
-import com.projet.aws.awsutils.service.DocumentService;
+import com.cooptalis.hrmanagement.api.DocumentApi;
+import com.cooptalis.hrmanagement.service.DocumentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import static java.util.Objects.requireNonNull;
@@ -22,7 +23,7 @@ public class DocumentController implements DocumentApi {
 
 
     @GetMapping(GET_DOCUMENT_FROM_S3)
-    public void getDocumentFromS3(String documentName) {
+    public void getDocumentFromS3(@PathVariable String documentName) {
         documentService.getDocumentFromS3(documentName);
     }
 }
