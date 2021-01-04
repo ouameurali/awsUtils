@@ -1,10 +1,10 @@
-package com.projet.aws.awsutils;
+package com.cooptalis.hrmanagement;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AwsUtilsApplicationTests {
+class HrManagementTests {
 
 	@Test
 	void contextLoads() {

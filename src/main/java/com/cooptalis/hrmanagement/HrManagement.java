@@ -1,13 +1,13 @@
-package com.projet.aws.awsutils;
+package com.cooptalis.hrmanagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AwsUtilsApplication {
+public class HrManagement {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AwsUtilsApplication.class, args);
+		SpringApplication.run(HrManagement.class, args);
 	}
 
 }
