@@ -4,6 +4,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.Bucket;
 import com.cooptalis.hrmanagement.utils.AwsService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class DocumentService {
 
     private final AwsService awsService;
 
+    @Autowired
     public DocumentService(AwsService awsService) {
         this.awsService = requireNonNull(awsService);
     }

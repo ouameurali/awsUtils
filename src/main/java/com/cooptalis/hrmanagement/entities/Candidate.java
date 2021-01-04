@@ -48,7 +48,7 @@ public class Candidate implements Serializable {
     @Column
     private String level;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "candidate_skills",
             joinColumns = @JoinColumn(name = "referenceCandidate"),

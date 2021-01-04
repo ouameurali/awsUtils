@@ -1,6 +1,6 @@
 package com.cooptalis.hrmanagement.hrenum;
 
-public enum SkillsLevel {
+public enum Level {
     JUNIOR,
     INTERMEDIATE,
     EXPERT;

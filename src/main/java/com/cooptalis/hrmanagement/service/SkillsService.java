@@ -1,9 +1,11 @@
 package com.cooptalis.hrmanagement.service;
 
 import com.cooptalis.hrmanagement.entities.Skills;
+import com.cooptalis.hrmanagement.hrenum.ErrorCodeEnum;
 import com.cooptalis.hrmanagement.hrexception.HrmException;
 import com.cooptalis.hrmanagement.repository.SkillsRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -15,12 +17,13 @@ import static java.util.Objects.requireNonNull;
 public class SkillsService {
     private final SkillsRepository skillsRepository;
 
+    @Autowired
     public SkillsService(SkillsRepository skillsRepository) {
         this.skillsRepository = requireNonNull(skillsRepository);
     }
 
     public Skills getSkills(String skillsName) throws HrmException {
-        return skillsRepository.findByskillName(skillsName).orElseThrow(() -> new HrmException("skills not found !"));
+        return skillsRepository.findByskillName(skillsName).orElseThrow(() -> new HrmException(ErrorCodeEnum.SKILLS_NOT_FOUND));
     }
 
     @Transactional

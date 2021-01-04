@@ -3,10 +3,12 @@ package com.cooptalis.hrmanagement.service;
 import com.cooptalis.hrmanagement.dto.CandidateRequestDTO;
 import com.cooptalis.hrmanagement.entities.Candidate;
 import com.cooptalis.hrmanagement.entities.Skills;
+import com.cooptalis.hrmanagement.hrenum.ErrorCodeEnum;
 import com.cooptalis.hrmanagement.hrexception.HrmException;
 import com.cooptalis.hrmanagement.repository.CandidateRepository;
 import com.cooptalis.hrmanagement.repository.SkillsRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -25,6 +27,7 @@ public class CandidateService {
     private final SkillsRepository skillsRepository;
     private final CandidateCheck candidateCheck;
 
+    @Autowired
     public CandidateService(CandidateRepository candidateRepository, SkillsService skillsService, SkillsRepository skillsRepository, CandidateCheck candidateCheck) {
         this.candidateRepository = requireNonNull(candidateRepository);
         this.skillsService = requireNonNull(skillsService);
@@ -39,8 +42,8 @@ public class CandidateService {
 
         Optional<Candidate> candidate = candidateCheck.checkCandidateExist(candidateRequestDTO.getReferenceNumber());
         if (candidate.isPresent()) {
-            log.error("Candidate Already Existe");
-            throw new HrmException("Candidate Already Existe");
+            log.error(ErrorCodeEnum.CANDIDATE_ALREADY_EXIST.getPublicMessage());
+            throw new HrmException(ErrorCodeEnum.CANDIDATE_ALREADY_EXIST);
         }
 
         List<Skills> skillsList = new ArrayList<>();
@@ -62,7 +65,8 @@ public class CandidateService {
     public void removeCandidate(String referenceNumber) throws HrmException {
         Optional<Candidate> candidate = candidateCheck.checkCandidateExist(referenceNumber);
         if (!candidate.isPresent()) {
-            throw new HrmException("Candidate to be removed not found");
+            log.error(ErrorCodeEnum.CANDIDATE_NOT_FOUND.getPublicMessage());
+            throw new HrmException(ErrorCodeEnum.CANDIDATE_NOT_FOUND);
         }
         candidateRepository.delete(candidate.get());
     }

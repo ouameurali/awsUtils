@@ -20,7 +20,7 @@ import java.io.IOException;
 @Slf4j
 public class AwsService {
 
-    private String bucketName = "documents/";
+    private final String bucketName = "documents/";
 
     public AmazonS3 connexionToS3() {
         AWSCredentials credentials = new BasicAWSCredentials(

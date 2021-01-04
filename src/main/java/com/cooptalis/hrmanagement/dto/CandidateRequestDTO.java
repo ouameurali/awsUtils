@@ -14,12 +14,12 @@ import java.util.List;
 @NoArgsConstructor
 public class CandidateRequestDTO {
     @NotNull(message = "firstName is mandatory")
-    String firstName;
+    private String firstName;
     @NotNull(message = "lastName is mandatory")
-    String lastName;
-    Integer age;
-    String nationality;
+    private String lastName;
+    private Integer age;
+    private String nationality;
     @NotNull(message = "referenceNumber is mandatory")
-    String referenceNumber;
-    List<String> skillsName;
+    private String referenceNumber;
+    private List<String> skillsName;
 }

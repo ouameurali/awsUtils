@@ -5,6 +5,7 @@ import com.cooptalis.hrmanagement.entities.Skills;
 import com.cooptalis.hrmanagement.hrexception.HrmException;
 import com.cooptalis.hrmanagement.service.SkillsService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ import static java.util.Objects.requireNonNull;
 public class SkillsController implements SkillsApi {
 
     private final SkillsService skillsService;
-
+    @Autowired
     public SkillsController(SkillsService skillsService) {
         this.skillsService = requireNonNull(skillsService);
     }

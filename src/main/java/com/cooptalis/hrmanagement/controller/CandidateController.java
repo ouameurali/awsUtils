@@ -5,6 +5,7 @@ import com.cooptalis.hrmanagement.dto.CandidateRequestDTO;
 import com.cooptalis.hrmanagement.hrexception.HrmException;
 import com.cooptalis.hrmanagement.service.CandidateService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -16,7 +17,7 @@ import static java.util.Objects.requireNonNull;
 public class CandidateController implements CandidateApi {
 
     private final CandidateService candidateService;
-
+    @Autowired
     public CandidateController(CandidateService candidateService) {
         this.candidateService = requireNonNull(candidateService);
     }
